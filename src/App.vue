@@ -1,18 +1,13 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <MerchantPage />
+    <router-view />
   </div>
 </template>
 
 <script>
-import MerchantPage from './components/MerchantPage.vue';
-
 export default {
-  name: 'App',
-  components: {
-    MerchantPage
-  }
+  name: 'App'
 }
 </script>
 

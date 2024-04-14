@@ -4,6 +4,7 @@
     <input type="file" accept="image/*" @change="handleFileChange" />
     <button @click="processPayment" :disabled="!paymentDetails">Process Payment</button>
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div v-if="successMessage" class="success-message">{{ successMessage }}</div>
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
   data() {
     return {
       paymentDetails: null,
-      errorMessage: null
+      errorMessage: null,
+      successMessage: null
     };
   },
   methods: {
@@ -103,7 +105,8 @@ export default {
           })
           .then(data => {
             console.log('Payment processed successfully:', data);
-            // Redirect to success page or display success message
+            this.successMessage = 'Payment processed successfully';
+            this.paymentDetails = null;
           })
           .catch(error => {
             console.error('Error processing payment:', error);
